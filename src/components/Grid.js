@@ -1,4 +1,4 @@
-import React,{useState} from 'react';
+import React from 'react';
 import useStyles from '../Grid.styles'
 
 const offCell={
@@ -6,10 +6,10 @@ const offCell={
     color: "yellow",
 
 }
-const initialCells = Array.from({length:40},()=>offCell)
+// const initialCells = Array.from({length:40},()=>offCell)
 
-export default function Grid({currentColor}) {
-    const [cells, setCells]=useState(initialCells)
+export default function Grid({currentColor, cells, setCells}) {
+    // const [cells, setCells]=useState(initialCells)
 
     const classes= useStyles();
     const updateCell=(i, defaultState)=>(e)=>{

@@ -33,7 +33,7 @@ function App() {
          <div className={classes.colorSwatchContainer}>
 
            {[...new Set(cells.filter((cell)=>cell.on).map((cell)=>cell.color))].map((color,i)=>
-           <div key={i} className={classes.colorSwatch} style={{background: color}}></div>
+           <div key={i} onClick={()=>setCurrentColor(color)} className={classes.colorSwatch} style={{background: color}}></div>
          )}
          </div>
          

@@ -1,5 +1,6 @@
 .App {
   text-align: center;
+  margin-top: 10%;
 }
 
 .App-logo {
@@ -27,6 +28,20 @@
 .App-link {
   color: #61dafb;
 }
+
+h1{
+  padding:30px;
+  font-size: 3em;
+}
+
+input{
+  width: 70px;
+  margin:10px
+}
+
+/* button{
+  margin:10px
+} */
 
 @keyframes App-logo-spin {
   from {

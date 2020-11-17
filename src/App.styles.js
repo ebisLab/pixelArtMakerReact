@@ -8,7 +8,8 @@ export default createUseStyles({
     height:"100%", 
     // color:"red", 
     justifyContent:"center", 
-    alignItems:"center"
+    alignItems:"center",
+    marginBottom:"100px"
   },
   colorSwatchContainer:{
       display:"flex",

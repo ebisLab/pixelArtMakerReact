@@ -7,18 +7,22 @@ export default function Colorpicker({currentColor, onSetColor, setCurrentColor})
         // {currentColor}
         )
 
+        
+
     const colorChange=(e)=>{
         console.log(e.target.value)
         // setCurrentColor(e.target.value)
         onSetColor(e.target.value)
     }
 
-    return (
+    return (<div style={{display:"inline-flex"}}>
+    {/* <h2>Pick Color</h2> */}
         <input 
         className={classes.colorPicker}
         type="color"
         value={currentColor}
         onChange={colorChange}
         />
+        </div>
     )
 }

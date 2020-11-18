@@ -12,10 +12,10 @@ const offCell={
 
 const ref = React.createRef();
 const options = {
-    orientation: 'landscape',
-    // unit: 'in',
-    // format: [4,2]
-};
+    orientation: "landscape",
+    
+    unit: "in",
+  };
 
 export default function Grid({currentColor, cells, setCells, val2}) {
 
@@ -50,8 +50,8 @@ export default function Grid({currentColor, cells, setCells, val2}) {
 
     return (
         <>
-              <Pdf targetRef={ref} filename="code-example.pdf">
-        {({ toPdf }) => <button onClick={toPdf}>Save Image </button>}
+              <Pdf targetRef={ref} options={options} filename="reactimg.pdf">
+        {({ toPdf }) => <button onClick={toPdf} style={{margin:10}}>Save Image </button>}
       </Pdf>
         <div className={classes2.grid2} ref={ref} options={options}>
             {cells.map((cell, i)=><div 

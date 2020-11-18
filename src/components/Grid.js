@@ -2,6 +2,7 @@ import React from 'react';
 import useStyles from '../Grid.styles'
 import {createUseStyles } from 'react-jss'
 import Pdf from "react-to-pdf";
+import jsPDF from "jspdf";
 
 const offCell={
     on:false,

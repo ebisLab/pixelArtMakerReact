@@ -3,20 +3,13 @@ import React from 'react'
 import useStyles from '../ColorPicker.styles'
 
 export default function Colorpicker({currentColor, onSetColor, setCurrentColor}) {
-    const classes = useStyles(
-        // {currentColor}
-        )
-
-        
+    const classes = useStyles()
 
     const colorChange=(e)=>{
-        console.log(e.target.value)
-        // setCurrentColor(e.target.value)
         onSetColor(e.target.value)
     }
 
     return (<div style={{display:"inline-flex"}}>
-    {/* <h2>Pick Color</h2> */}
         <input 
         className={classes.colorPicker}
         type="color"

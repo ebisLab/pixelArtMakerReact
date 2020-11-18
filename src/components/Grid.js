@@ -1,6 +1,7 @@
 import React from 'react';
 import useStyles from '../Grid.styles'
 import {createUseStyles } from 'react-jss'
+import Pdf from "react-to-pdf";
 
 const offCell={
     on:false,
@@ -8,8 +9,15 @@ const offCell={
 
 }
 
+const ref = React.createRef();
+const options = {
+    orientation: 'landscape',
+    // unit: 'in',
+    // format: [4,2]
+};
+
 export default function Grid({currentColor, cells, setCells, val2}) {
-    console.log("val-->", Number(val2))
+
 
     const useStyles2 = createUseStyles({
         grid2:{
@@ -41,7 +49,10 @@ export default function Grid({currentColor, cells, setCells, val2}) {
 
     return (
         <>
-        <div className={classes2.grid2}>
+              <Pdf targetRef={ref} filename="code-example.pdf">
+        {({ toPdf }) => <button onClick={toPdf}>Save Image </button>}
+      </Pdf>
+        <div className={classes2.grid2} ref={ref} options={options}>
             {cells.map((cell, i)=><div 
             style={{background:cell.on? cell.color: "#ffffff"}}
             onClick={updateCell(i)} 

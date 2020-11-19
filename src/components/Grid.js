@@ -1,8 +1,7 @@
-import React from 'react';
+import React, { useState, createRef } from 'react';
 import useStyles from '../Grid.styles'
 import {createUseStyles } from 'react-jss'
 import Pdf from "react-to-pdf";
-import jsPDF from "jspdf";
 
 const offCell={
     on:false,
@@ -10,7 +9,7 @@ const offCell={
 
 }
 
-const ref = React.createRef();
+const ref = createRef();
 const options = {
     orientation: "landscape",
     
@@ -18,6 +17,7 @@ const options = {
   };
 
 export default function Grid({currentColor, cells, setCells, val2}) {
+    const [isClicked, setIsClicked]=useState(false)
 
 
     const useStyles2 = createUseStyles({
@@ -37,16 +37,38 @@ export default function Grid({currentColor, cells, setCells, val2}) {
     const updateCell=(i, defaultState)=>(e)=>{
         e.preventDefault()
         setCells(cells.map((cell,cellindex)=>{
+
+              
+              
             if(cellindex === i){
                 if (defaultState)return defaultState
                 return {on:true, color:currentColor}
             }
+  
             return cell
         }))
     };
-
-
     
+
+
+    const dragAction =()=>{
+        setIsClicked(true)
+    }
+
+    const mouseUp=(e)=>{
+        setIsClicked(false)
+
+    }
+
+    const mouseOver=(e)=>{
+        function makePixel(e) {
+            e.target.style.background=currentColor;
+         }
+        if(isClicked){
+            makePixel(e)
+        }
+    }
+  
 
     return (
         <>
@@ -57,6 +79,9 @@ export default function Grid({currentColor, cells, setCells, val2}) {
             {cells.map((cell, i)=><div 
             style={{background:cell.on? cell.color: "#ffffff"}}
             onClick={updateCell(i)} 
+            onMouseDown={dragAction}
+            onMouseOver={mouseOver}
+            onMouseUp={mouseUp}
             onContextMenu={updateCell(i, {state:offCell})}
             key={i} className={classes.cell}></div>)}
             
